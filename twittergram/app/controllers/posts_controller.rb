@@ -9,11 +9,9 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    render partial: "form"
   end
 
   def edit
-    render partial: "form"
   end
 
   def create
@@ -21,7 +19,7 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:success] = "Posted Successfully!"
-      redirect_to posts_path
+      redirect_to root_path
     else
       flash[:alert] = "Failed to post"
       render partial: "form"
@@ -32,7 +30,7 @@ class PostsController < ApplicationController
   def update
     if @post.update(post_params)
       flash[:success] = "Updated Post Successfully!"
-      redirect_to post_path(@post)
+      redirect_to root_path
     else
       flash[:alert] = "Failed to update post!"
       render partial: "form"

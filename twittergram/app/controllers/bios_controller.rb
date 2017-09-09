@@ -30,7 +30,7 @@ class BiosController < ApplicationController
 
   def update
     if @bio.update(bio_params)
-      redirect_to bio_path(@bio)
+      redirect_to bios_path(current_user)
     else
       render partial: "form"
     end
@@ -38,7 +38,7 @@ class BiosController < ApplicationController
 
   def destroy
     @bio.destroy
-    redirect_to bios_path
+    redirect_to bio_path
   end
 
   private
