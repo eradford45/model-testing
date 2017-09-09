@@ -1,4 +1,7 @@
-<%= form_for @comment do |f| %>
-
-  <%= f.submit %>
+<h1>Add a comment</h1>
+<%= form_for [@post, @comment] do |f| %>
+  <%= f.label :message %>
+  <%= f.text_area :message, required: true %>
+  <br />
+ <%= f.submit %>
 <% end %>
