@@ -3,15 +3,28 @@
   <i class="circular users icon"></i>
   TweetGram Feed
 </h2>
-<div class="ui center">
-<ul>
-  <% @posts.reverse.each do |post| %>
-    <%= post.user.email %>
-    <li>
-      <%= link_to post.content, post %>
-    </li>
-    <%= post.created_at.strftime("%m/%d/%Y at %I:%M %p") %>
-    <br>
-  <% end %>
-</ul>
-</div>
+  <ul >
+    <% @posts.reverse.each do |post| %>
+      <li class="ui list"> 
+        <div class="ui card" style="width: 35%; align: center;">
+          <div class="content">
+            <div class="header"><%= post.user.email %></div>
+            <div class="description">
+              <%= link_to post.content, post %>
+            </div>
+          </div>
+          <div class="extra content">
+            <span class="left floated">
+              <i class="calendar icon"></i>
+              <%= post.created_at.strftime("%m/%d/%Y at %I:%M %p") %>
+            </span>
+            <span class="right floated">
+              <%= link_to '<i class="write icon"></i>'.html_safe, edit_post_path(post)%> 
+              <%= link_to '<i class="trash icon"></i>'.html_safe, post, method: :delete %> 
+            </span>
+          </div>
+        </div>
+      </li>
+      <br>
+    <% end %>
+  </ul>

@@ -1,6 +1,6 @@
 class BiosController < ApplicationController
   before_action :set_bio, only: [:show, :update, :edit, :destroy]
-  before_action :set_user
+  before_action :set_user, only: [:create]
   
   def index
     @bios = Bio.all
@@ -20,9 +20,9 @@ class BiosController < ApplicationController
 
   def create
     @bio = Bio.new(bio_params)
-
+    @bio.user_id = @user
     if @bio.save
-      redirect_to bio_path(@bio)
+      redirect_to user_bios_path
     else
       render partial: "form"
     end
@@ -53,6 +53,6 @@ class BiosController < ApplicationController
     end
 
     def set_user
-      @user = current_user
+      @user = current_user.id
     end
 end
