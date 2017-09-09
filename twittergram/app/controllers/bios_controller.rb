@@ -48,6 +48,6 @@ class BiosController < ApplicationController
     end
 
     def bio_params
-      params.require(:bio).permit(:name)
+      params.require(:bio).permit(:profile_image, :description, :user_id)
     end
 end
