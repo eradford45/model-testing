@@ -1,11 +1,13 @@
-<%= link_to 'Your Bio', user_bio_path(@user_id) %>
-
-<h1>Click a Post to view comments</h1>
-<%= link_to 'Create a New Post', new_post_path %>
+<%= link_to 'Your Bio', user_bios_path(current_user) %>
+<hr>
+<%= link_to 'New Post', new_post_path %>
 <ul>
-  <% @posts.each do |post| %>
+  <% @posts.reverse.each do |post| %>
+    <%= post.user.email %>
     <li>
       <%= link_to post.content, post %>
     </li>
+    <%= post.created_at.strftime("%m/%d/%Y at %I:%M %p") %>
+    <br>
   <% end %>
 </ul>
