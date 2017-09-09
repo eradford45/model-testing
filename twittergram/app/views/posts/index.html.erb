@@ -1,6 +1,3 @@
-<%= link_to 'Your Bio', user_bios_path(current_user) %>
-<hr>
-<%= link_to 'New Post', new_post_path %>
 <ul>
   <% @posts.reverse.each do |post| %>
     <%= post.user.email %>
