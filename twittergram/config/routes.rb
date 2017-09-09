@@ -6,7 +6,5 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :users do
-    resources :bios
-  end
+  resources :bios
 end
