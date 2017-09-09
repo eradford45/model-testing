@@ -1,6 +1,7 @@
 class BiosController < ApplicationController
   before_action :set_bio, only: [:show, :update, :edit, :destroy]
-
+  before_action :set_user
+  
   def index
     @bios = Bio.all
   end
@@ -49,5 +50,9 @@ class BiosController < ApplicationController
 
     def bio_params
       params.require(:bio).permit(:profile_image, :description, :user_id)
+    end
+
+    def set_user
+      @user = current_user
     end
 end
